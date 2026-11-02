@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+sites.json
+database/*.db*
+logs/*
+!logs/.gitkeep
+screenshots/*
+!screenshots/.gitkeep
+test_data/synthetic/
+test_data/mock_site/
+models/classifier_v1.0.[1-9]*.json
+
+# Training artefacts (reproducible: scripts	rain_10000.bat)
+datasets/
+models/checkpoints/
+models/archive/
+reports/training_history/
+backups/

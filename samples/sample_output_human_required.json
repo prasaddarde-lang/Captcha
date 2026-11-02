@@ -1,0 +1,45 @@
+{
+  "task_id": "RPA_001",
+  "status": "HUMAN_VERIFICATION_REQUIRED",
+  "captcha_detected": true,
+  "captcha_type": "recaptcha",
+  "captcha_subtype": "v2_checkbox",
+  "confidence": 0.9765,
+  "resolution_method": "human_in_the_loop",
+  "message": "Operator verification required",
+  "request_id": "HV_913ff1bdd9ac4a88",
+  "screenshot_path": null,
+  "next_action": "Show the browser to an operator, then poll with action=check_status and this request_id",
+  "official_api": null,
+  "signals": [
+    {
+      "captcha_type": "recaptcha",
+      "signal": "recaptcha_script",
+      "weight": 2.5
+    },
+    {
+      "captcha_type": "recaptcha",
+      "signal": "recaptcha_class",
+      "weight": 2.5
+    },
+    {
+      "captcha_type": "recaptcha",
+      "signal": "recaptcha_response_field",
+      "weight": 2.0
+    },
+    {
+      "captcha_type": "recaptcha",
+      "signal": "recaptcha_sitekey_attr",
+      "weight": 0.5
+    },
+    {
+      "captcha_type": "hcaptcha",
+      "signal": "hcaptcha_sitekey_attr",
+      "weight": 0.5
+    }
+  ],
+  "model_version": "1.0.0",
+  "duration_ms": 34,
+  "exit_code": 11,
+  "timestamp": "2026-10-30T13:08:58+00:00"
+}

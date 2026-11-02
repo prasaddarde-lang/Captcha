@@ -1,0 +1,10 @@
+{
+  "task_id": "RPA_TEST_001",
+  "platform": "UiPath",
+  "browser": "Chrome",
+  "action": "detect_and_handle",
+  "timeout": 30,
+  "mode": "test",
+  "html_file": "test_data/fixtures/recaptcha_mock.html",
+  "test_response": "pass"
+}

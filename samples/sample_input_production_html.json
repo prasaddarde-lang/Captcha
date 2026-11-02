@@ -1,0 +1,10 @@
+{
+  "task_id": "RPA_001",
+  "platform": "UiPath",
+  "browser": "Chrome",
+  "action": "detect_and_handle",
+  "timeout": 120,
+  "mode": "production",
+  "html_file": "test_data/fixtures/recaptcha_mock.html",
+  "url": "https://portal.example.org/login"
+}

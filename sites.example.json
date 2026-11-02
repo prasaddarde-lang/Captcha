@@ -1,0 +1,21 @@
+{
+  "_comment": "Authorized-site registry. Copy to sites.json. Store only env-var NAMES here, never secrets.",
+  "sites": {
+    "portal.example.com": {
+      "official_api": {
+        "enabled": true,
+        "base_url": "https://api.example.com/v1",
+        "health_path": "/status",
+        "docs_url": "https://developer.example.com/docs",
+        "auth_env": "EXAMPLE_PORTAL_API_TOKEN",
+        "auth_header": "Authorization",
+        "auth_scheme": "Bearer"
+      }
+    },
+    "intranet.mycompany.local": {
+      "owned": true,
+      "provider_secret_env": "MYCOMPANY_RECAPTCHA_SECRET",
+      "notes": "Our own site: /v1/provider/verify may verify tokens produced by human users."
+    }
+  }
+}

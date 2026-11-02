@@ -1,0 +1,17 @@
+task_id=RPA_003
+status=CAPTCHA_DETECTED
+captcha_detected=true
+captcha_type=hcaptcha
+captcha_subtype=widget
+confidence=0.9765
+resolution_method=human_in_the_loop
+message=hcaptcha CAPTCHA detected; planned resolution: human_in_the_loop
+request_id=
+screenshot_path=
+next_action=
+official_api=
+model_version=1.0.0
+duration_ms=15
+exit_code=10
+timestamp=2026-10-30T13:09:00+00:00
+signal_count=5

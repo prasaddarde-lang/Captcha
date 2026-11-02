@@ -1,0 +1,12 @@
+{
+  "task_id": "RPA_002",
+  "platform": "UiPath",
+  "browser": "Chrome",
+  "action": "detect_and_handle",
+  "timeout": 300,
+  "mode": "production",
+  "cdp_endpoint": "http://127.0.0.1:9222",
+  "url": "https://portal.example.org/login",
+  "screenshot": true,
+  "wait_for_operator": true
+}

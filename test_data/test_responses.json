@@ -1,0 +1,6 @@
+{
+  "_comment": "Configurable responses for mode=test (mock challenges only). Values: pass | fail | timeout",
+  "default": "pass",
+  "by_type": {},
+  "delay_seconds": 0
+}

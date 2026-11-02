@@ -1,0 +1,3784 @@
+{
+  "production": "img-1.0.3",
+  "history": [
+    {
+      "event": "promote",
+      "version": "img-1.0.3",
+      "previous": null,
+      "at": "2026-10-30T17:41:48+00:00"
+    }
+  ],
+  "models": {
+    "img-1.0.0": {
+      "version": "img-1.0.0",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.0/model.npz",
+      "sha256": "51fc79e80c32b3c8462ebb7df71e72a4e3d7dad63c82481cfb9ad2a066680f2a",
+      "created_at": "2026-10-30T16:43:32+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.982,
+        "macro_f1": 0.9818,
+        "per_category": {
+          "text": {
+            "precision": 0.9333,
+            "recall": 0.98,
+            "f1": 0.9561,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9519,
+            "recall": 0.99,
+            "f1": 0.9706,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9778,
+            "recall": 0.88,
+            "f1": 0.9263,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "grid": {
+            "precision": 0.9804,
+            "recall": 1.0,
+            "f1": 0.9901,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9802,
+            "recall": 0.99,
+            "f1": 0.9851,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              98,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              99,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              6,
+              5,
+              88,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              99,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              99
+            ]
+          ]
+        },
+        "false_positive_rate": 0.01,
+        "false_negative_rate": 0.0022,
+        "detection_accuracy": 0.997,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.01,
+          "false_negative_rate": 0.0267,
+          "detection_accuracy": 0.975,
+          "false_positives": 1,
+          "false_negatives": 24,
+          "accuracy": 0.968,
+          "abstained": 22
+        },
+        "confidence": {
+          "mean_correct": 0.9915,
+          "mean_incorrect": 0.7572
+        },
+        "latency_ms": {
+          "mean": 13.149,
+          "p50": 12.545,
+          "p95": 18.391,
+          "samples": 200,
+          "batch_ms_per_sample": 0.0613
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 3.78,
+          "rss_mb": 239.1
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.0",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T16:43:32+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.985,
+        "macro_f1": 0.985,
+        "per_category": {
+          "text": {
+            "precision": 0.9596,
+            "recall": 0.95,
+            "f1": 0.9548,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9434,
+            "recall": 1.0,
+            "f1": 0.9709,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9588,
+            "recall": 0.93,
+            "f1": 0.9442,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9898,
+            "recall": 0.97,
+            "f1": 0.9798,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              95,
+              2,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              3,
+              93,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              97
+            ]
+          ]
+        },
+        "false_positive_rate": 0.03,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.996,
+        "false_positives": 3,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.02,
+          "false_negative_rate": 0.02,
+          "detection_accuracy": 0.98,
+          "false_positives": 2,
+          "false_negatives": 18,
+          "accuracy": 0.974,
+          "abstained": 18
+        },
+        "confidence": {
+          "mean_correct": 0.9912,
+          "mean_incorrect": 0.8255
+        },
+        "latency_ms": {
+          "mean": 12.069,
+          "p50": 11.657,
+          "p95": 14.568,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0557
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.69,
+          "rss_mb": 239.8
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.0",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T16:43:29+00:00"
+      },
+      "architecture_comparison": {
+        "nearest_centroid": {
+          "val_accuracy": 0.805,
+          "val_macro_f1": 0.7932,
+          "val_fp_rate": 0.46,
+          "val_fn_rate": 0.01,
+          "epochs_run": 1,
+          "status": "complete",
+          "train_seconds": 1.1,
+          "param_count": 21421,
+          "latency_ms_mean": 5.658
+        },
+        "softmax": {
+          "val_accuracy": 0.98,
+          "val_macro_f1": 0.98,
+          "val_fp_rate": 0.06,
+          "val_fn_rate": 0.0022,
+          "epochs_run": 19,
+          "status": "early_stopped",
+          "train_seconds": 6.4,
+          "param_count": 21430,
+          "latency_ms_mean": 11.422
+        },
+        "mlp": {
+          "val_accuracy": 0.985,
+          "val_macro_f1": 0.985,
+          "val_fp_rate": 0.03,
+          "val_fn_rate": 0.0011,
+          "epochs_run": 14,
+          "status": "early_stopped",
+          "train_seconds": 45.3,
+          "param_count": 551178,
+          "latency_ms_mean": 12.069
+        }
+      },
+      "dataset_hash": "695ebead483d2b96",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 8000,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": null,
+      "note": "",
+      "compared_with": null,
+      "recommended": true,
+      "criteria": [
+        "meets initial thresholds"
+      ],
+      "train_seconds_total": 57.2
+    },
+    "img-1.0.1": {
+      "version": "img-1.0.1",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.1/model.npz",
+      "sha256": "84c49e17f704b945316538701c9414840610f102bb20a3ea0634e5e15528b907",
+      "created_at": "2026-10-30T16:46:59+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.95,
+            "recall": 0.95,
+            "f1": 0.95,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.98,
+            "recall": 0.98,
+            "f1": 0.98,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9412,
+            "recall": 0.96,
+            "f1": 0.9505,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 0.98,
+            "f1": 0.9899,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9899,
+            "recall": 0.98,
+            "f1": 0.9849,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              95,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              98,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              96,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              98,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              98
+            ]
+          ]
+        },
+        "false_positive_rate": 0.02,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.997,
+        "false_positives": 2,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.02,
+          "false_negative_rate": 0.0344,
+          "detection_accuracy": 0.967,
+          "false_positives": 2,
+          "false_negatives": 31,
+          "accuracy": 0.964,
+          "abstained": 30
+        },
+        "confidence": {
+          "mean_correct": 0.9845,
+          "mean_incorrect": 0.7089
+        },
+        "latency_ms": {
+          "mean": 12.85,
+          "p50": 12.224,
+          "p95": 18.002,
+          "samples": 200,
+          "batch_ms_per_sample": 0.061
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 3.97,
+          "rss_mb": 256.8
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.1",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T16:46:59+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.949,
+            "recall": 0.93,
+            "f1": 0.9394,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9612,
+            "recall": 0.99,
+            "f1": 0.9754,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9314,
+            "recall": 0.95,
+            "f1": 0.9406,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 1.0,
+            "recall": 0.97,
+            "f1": 0.9848,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              93,
+              1,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              99,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              2,
+              95,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              97
+            ]
+          ]
+        },
+        "false_positive_rate": 0.03,
+        "false_negative_rate": 0.0,
+        "detection_accuracy": 0.997,
+        "false_positives": 3,
+        "false_negatives": 0,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.03,
+          "false_negative_rate": 0.0322,
+          "detection_accuracy": 0.968,
+          "false_positives": 3,
+          "false_negatives": 29,
+          "accuracy": 0.964,
+          "abstained": 29
+        },
+        "confidence": {
+          "mean_correct": 0.9853,
+          "mean_incorrect": 0.7409
+        },
+        "latency_ms": {
+          "mean": 12.079,
+          "p50": 11.736,
+          "p95": 15.218,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0553
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.55,
+          "rss_mb": 255.9
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.1",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T16:46:56+00:00"
+      },
+      "architecture_comparison": {
+        "mlp": {
+          "val_accuracy": 0.984,
+          "val_macro_f1": 0.984,
+          "val_fp_rate": 0.03,
+          "val_fn_rate": 0.0,
+          "epochs_run": 8,
+          "status": "early_stopped",
+          "train_seconds": 27.5,
+          "param_count": 551178,
+          "latency_ms_mean": 12.079
+        }
+      },
+      "dataset_hash": "a0a876397fd2e30b",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 8400,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": 0,
+      "note": "iteration 0: +400 'math' samples",
+      "compared_with": "img-1.0.0",
+      "recommended": false,
+      "criteria": [
+        "false_positive_rate rises by 0.0100 (> 0.005)"
+      ],
+      "train_seconds_total": 43.6
+    },
+    "img-1.0.2": {
+      "version": "img-1.0.2",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.2/model.npz",
+      "sha256": "67de0a8adff7a570ea5c9b7104d0efe01c32cfb696606a3ff843ba28b13faa55",
+      "created_at": "2026-10-30T16:50:37+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.95,
+            "recall": 0.95,
+            "f1": 0.95,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.98,
+            "recall": 0.98,
+            "f1": 0.98,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9412,
+            "recall": 0.96,
+            "f1": 0.9505,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 0.98,
+            "f1": 0.9899,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9899,
+            "recall": 0.98,
+            "f1": 0.9849,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              95,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              98,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              96,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              98,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              98
+            ]
+          ]
+        },
+        "false_positive_rate": 0.02,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.997,
+        "false_positives": 2,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.02,
+          "false_negative_rate": 0.0344,
+          "detection_accuracy": 0.967,
+          "false_positives": 2,
+          "false_negatives": 31,
+          "accuracy": 0.964,
+          "abstained": 30
+        },
+        "confidence": {
+          "mean_correct": 0.9845,
+          "mean_incorrect": 0.7089
+        },
+        "latency_ms": {
+          "mean": 13.631,
+          "p50": 12.201,
+          "p95": 21.548,
+          "samples": 200,
+          "batch_ms_per_sample": 0.0539
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 3.97,
+          "rss_mb": 245.8
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.2",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T16:50:37+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.949,
+            "recall": 0.93,
+            "f1": 0.9394,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9612,
+            "recall": 0.99,
+            "f1": 0.9754,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9314,
+            "recall": 0.95,
+            "f1": 0.9406,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 1.0,
+            "recall": 0.97,
+            "f1": 0.9848,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              93,
+              1,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              99,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              2,
+              95,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              97
+            ]
+          ]
+        },
+        "false_positive_rate": 0.03,
+        "false_negative_rate": 0.0,
+        "detection_accuracy": 0.997,
+        "false_positives": 3,
+        "false_negatives": 0,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.03,
+          "false_negative_rate": 0.0322,
+          "detection_accuracy": 0.968,
+          "false_positives": 3,
+          "false_negatives": 29,
+          "accuracy": 0.964,
+          "abstained": 29
+        },
+        "confidence": {
+          "mean_correct": 0.9853,
+          "mean_incorrect": 0.7409
+        },
+        "latency_ms": {
+          "mean": 11.108,
+          "p50": 10.896,
+          "p95": 13.83,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0549
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.5,
+          "rss_mb": 247.8
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.2",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T16:50:33+00:00"
+      },
+      "architecture_comparison": {
+        "nearest_centroid": {
+          "val_accuracy": 0.808,
+          "val_macro_f1": 0.7969,
+          "val_fp_rate": 0.46,
+          "val_fn_rate": 0.0089,
+          "epochs_run": 1,
+          "status": "complete",
+          "train_seconds": 1.0,
+          "param_count": 21421,
+          "latency_ms_mean": 5.059
+        },
+        "softmax": {
+          "val_accuracy": 0.977,
+          "val_macro_f1": 0.977,
+          "val_fp_rate": 0.09,
+          "val_fn_rate": 0.0011,
+          "epochs_run": 9,
+          "status": "early_stopped",
+          "train_seconds": 3.2,
+          "param_count": 21430,
+          "latency_ms_mean": 11.327
+        },
+        "mlp": {
+          "val_accuracy": 0.984,
+          "val_macro_f1": 0.984,
+          "val_fp_rate": 0.03,
+          "val_fn_rate": 0.0,
+          "epochs_run": 8,
+          "status": "early_stopped",
+          "train_seconds": 27.1,
+          "param_count": 551178,
+          "latency_ms_mean": 11.108
+        }
+      },
+      "dataset_hash": "a0a876397fd2e30b",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 8400,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": null,
+      "note": "",
+      "compared_with": "img-1.0.1",
+      "recommended": false,
+      "criteria": [
+        "accuracy gain +0.0000 < required 0.002"
+      ],
+      "train_seconds_total": 35.7
+    },
+    "img-1.0.3": {
+      "version": "img-1.0.3",
+      "status": "PRODUCTION",
+      "path": "models/checkpoints/img-1.0.3/model.npz",
+      "sha256": "e20144ac8686952a6fb088719bdab74f84adf8c356f1b85eb7d32f7d9ef90b5d",
+      "created_at": "2026-10-30T17:09:29+00:00",
+      "approved_by": "Bipin",
+      "approved_at": "2026-10-30T17:41:47+00:00",
+      "promoted_at": "2026-10-30T17:41:48+00:00",
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.99,
+        "macro_f1": 0.99,
+        "per_category": {
+          "text": {
+            "precision": 0.9796,
+            "recall": 0.96,
+            "f1": 0.9697,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.99,
+            "recall": 0.99,
+            "f1": 0.99,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.951,
+            "recall": 0.97,
+            "f1": 0.9604,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              96,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              99,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              97,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              99,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100
+            ]
+          ]
+        },
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.999,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.0189,
+          "detection_accuracy": 0.983,
+          "false_positives": 0,
+          "false_negatives": 17,
+          "accuracy": 0.98,
+          "abstained": 16
+        },
+        "confidence": {
+          "mean_correct": 0.9935,
+          "mean_incorrect": 0.7226
+        },
+        "latency_ms": {
+          "mean": 13.045,
+          "p50": 12.269,
+          "p95": 18.703,
+          "samples": 200,
+          "batch_ms_per_sample": 0.06
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 4.17,
+          "rss_mb": 264.0
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.3",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T17:09:29+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.9789,
+            "recall": 0.93,
+            "f1": 0.9538,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9612,
+            "recall": 0.99,
+            "f1": 0.9754,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9238,
+            "recall": 0.97,
+            "f1": 0.9463,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9896,
+            "recall": 0.95,
+            "f1": 0.9694,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              93,
+              1,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              99,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              2,
+              97,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              1,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              95
+            ]
+          ]
+        },
+        "false_positive_rate": 0.05,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.994,
+        "false_positives": 5,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.02,
+          "false_negative_rate": 0.02,
+          "detection_accuracy": 0.98,
+          "false_positives": 2,
+          "false_negatives": 18,
+          "accuracy": 0.975,
+          "abstained": 20
+        },
+        "confidence": {
+          "mean_correct": 0.9922,
+          "mean_incorrect": 0.7855
+        },
+        "latency_ms": {
+          "mean": 12.022,
+          "p50": 11.844,
+          "p95": 14.559,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0544
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.62,
+          "rss_mb": 262.0
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.3",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T17:09:26+00:00"
+      },
+      "architecture_comparison": {
+        "mlp": {
+          "val_accuracy": 0.984,
+          "val_macro_f1": 0.984,
+          "val_fp_rate": 0.05,
+          "val_fn_rate": 0.0011,
+          "epochs_run": 18,
+          "status": "early_stopped",
+          "train_seconds": 66.1,
+          "param_count": 551178,
+          "latency_ms_mean": 12.022
+        }
+      },
+      "dataset_hash": "d383d0d2258fd6f1",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 8800,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": 1,
+      "note": "iteration 1: +400 'math' samples",
+      "compared_with": "img-1.0.0",
+      "recommended": true,
+      "criteria": [
+        "accuracy gain +0.0080; no category or FP/FN regression"
+      ],
+      "train_seconds_total": 82.8,
+      "approval_note": "criteria met",
+      "archive_path": "models/archive/img-1.0.3.npz"
+    },
+    "img-1.0.4": {
+      "version": "img-1.0.4",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.4/model.npz",
+      "sha256": "af8920802c889a9fe4521a6b735a49dbb4361ba6b92dc3ebdf0269f495ac0f3c",
+      "created_at": "2026-10-30T17:13:31+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.989,
+        "macro_f1": 0.989,
+        "per_category": {
+          "text": {
+            "precision": 0.9505,
+            "recall": 0.96,
+            "f1": 0.9552,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.99,
+            "recall": 0.99,
+            "f1": 0.99,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9596,
+            "recall": 0.95,
+            "f1": 0.9548,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              96,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              99,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              1,
+              95,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100
+            ]
+          ]
+        },
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.999,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.0178,
+          "detection_accuracy": 0.984,
+          "false_positives": 0,
+          "false_negatives": 16,
+          "accuracy": 0.979,
+          "abstained": 15
+        },
+        "confidence": {
+          "mean_correct": 0.9929,
+          "mean_incorrect": 0.7758
+        },
+        "latency_ms": {
+          "mean": 12.137,
+          "p50": 11.704,
+          "p95": 16.542,
+          "samples": 200,
+          "batch_ms_per_sample": 0.0527
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 3.75,
+          "rss_mb": 269.9
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.4",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T17:13:31+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.987,
+        "macro_f1": 0.987,
+        "per_category": {
+          "text": {
+            "precision": 0.9796,
+            "recall": 0.96,
+            "f1": 0.9697,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9703,
+            "recall": 0.98,
+            "f1": 0.9751,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9327,
+            "recall": 0.97,
+            "f1": 0.951,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 1.0,
+            "recall": 0.96,
+            "f1": 0.9796,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              96,
+              1,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              98,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              2,
+              97,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              96
+            ]
+          ]
+        },
+        "false_positive_rate": 0.04,
+        "false_negative_rate": 0.0,
+        "detection_accuracy": 0.996,
+        "false_positives": 4,
+        "false_negatives": 0,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.04,
+          "false_negative_rate": 0.02,
+          "detection_accuracy": 0.978,
+          "false_positives": 4,
+          "false_negatives": 18,
+          "accuracy": 0.975,
+          "abstained": 18
+        },
+        "confidence": {
+          "mean_correct": 0.9906,
+          "mean_incorrect": 0.7696
+        },
+        "latency_ms": {
+          "mean": 11.443,
+          "p50": 11.113,
+          "p95": 14.134,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0612
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.56,
+          "rss_mb": 269.3
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.4",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T17:13:28+00:00"
+      },
+      "architecture_comparison": {
+        "mlp": {
+          "val_accuracy": 0.987,
+          "val_macro_f1": 0.987,
+          "val_fp_rate": 0.04,
+          "val_fn_rate": 0.0,
+          "epochs_run": 13,
+          "status": "early_stopped",
+          "train_seconds": 47.4,
+          "param_count": 551178,
+          "latency_ms_mean": 11.443
+        }
+      },
+      "dataset_hash": "e7a8e761aadea664",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 9200,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": 2,
+      "note": "iteration 2: +400 'math' samples",
+      "compared_with": "img-1.0.3",
+      "recommended": false,
+      "criteria": [
+        "accuracy gain -0.0010 < required 0.002"
+      ],
+      "train_seconds_total": 64.6
+    },
+    "img-1.0.5": {
+      "version": "img-1.0.5",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.5/model.npz",
+      "sha256": "45ef3586fd38f53decf37668b14b1786bf0e072415d805ba1ea1dd521558c8f7",
+      "created_at": "2026-10-30T17:17:20+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.987,
+        "macro_f1": 0.987,
+        "per_category": {
+          "text": {
+            "precision": 0.9792,
+            "recall": 0.94,
+            "f1": 0.9592,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9899,
+            "recall": 0.98,
+            "f1": 0.9849,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9333,
+            "recall": 0.98,
+            "f1": 0.9561,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.98,
+            "recall": 0.98,
+            "f1": 0.98,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              94,
+              1,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              98,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              98,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              98
+            ]
+          ]
+        },
+        "false_positive_rate": 0.02,
+        "false_negative_rate": 0.0022,
+        "detection_accuracy": 0.996,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.0222,
+          "detection_accuracy": 0.98,
+          "false_positives": 0,
+          "false_negatives": 20,
+          "accuracy": 0.976,
+          "abstained": 20
+        },
+        "confidence": {
+          "mean_correct": 0.992,
+          "mean_incorrect": 0.6921
+        },
+        "latency_ms": {
+          "mean": 13.067,
+          "p50": 12.358,
+          "p95": 19.116,
+          "samples": 200,
+          "batch_ms_per_sample": 0.0554
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 4.14,
+          "rss_mb": 277.8
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.5",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T17:17:19+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.986,
+        "macro_f1": 0.9861,
+        "per_category": {
+          "text": {
+            "precision": 0.9796,
+            "recall": 0.96,
+            "f1": 0.9697,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9898,
+            "recall": 0.97,
+            "f1": 0.9798,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9074,
+            "recall": 0.98,
+            "f1": 0.9423,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "none": {
+            "precision": 1.0,
+            "recall": 0.96,
+            "f1": 0.9796,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              96,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              97,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              98,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              1,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              96
+            ]
+          ]
+        },
+        "false_positive_rate": 0.04,
+        "false_negative_rate": 0.0,
+        "detection_accuracy": 0.996,
+        "false_positives": 4,
+        "false_negatives": 0,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.03,
+          "false_negative_rate": 0.0311,
+          "detection_accuracy": 0.969,
+          "false_positives": 3,
+          "false_negatives": 28,
+          "accuracy": 0.965,
+          "abstained": 29
+        },
+        "confidence": {
+          "mean_correct": 0.9883,
+          "mean_incorrect": 0.7714
+        },
+        "latency_ms": {
+          "mean": 11.835,
+          "p50": 11.525,
+          "p95": 14.792,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0585
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.69,
+          "rss_mb": 277.1
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.5",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T17:17:16+00:00"
+      },
+      "architecture_comparison": {
+        "mlp": {
+          "val_accuracy": 0.986,
+          "val_macro_f1": 0.9861,
+          "val_fp_rate": 0.04,
+          "val_fn_rate": 0.0,
+          "epochs_run": 10,
+          "status": "early_stopped",
+          "train_seconds": 40.0,
+          "param_count": 551178,
+          "latency_ms_mean": 11.835
+        }
+      },
+      "dataset_hash": "30e8204e0b0029fb",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 9600,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": 3,
+      "note": "iteration 3: +400 'math' samples",
+      "compared_with": "img-1.0.3",
+      "recommended": false,
+      "criteria": [
+        "accuracy gain -0.0030 < required 0.002",
+        "false_positive_rate rises by 0.0200 (> 0.005)"
+      ],
+      "train_seconds_total": 57.3
+    },
+    "img-1.0.6": {
+      "version": "img-1.0.6",
+      "status": "CANDIDATE",
+      "path": "models/checkpoints/img-1.0.6/model.npz",
+      "sha256": "0758448446a12c8f59e4168b8dbdc95a80f09a9a6641649bec951c0945a1c8dd",
+      "created_at": "2026-10-30T17:21:21+00:00",
+      "approved_by": null,
+      "approved_at": null,
+      "promoted_at": null,
+      "architecture": "mlp",
+      "test_metrics": {
+        "accuracy": 0.989,
+        "macro_f1": 0.989,
+        "per_category": {
+          "text": {
+            "precision": 0.9612,
+            "recall": 0.99,
+            "f1": 0.9754,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9898,
+            "recall": 0.97,
+            "f1": 0.9798,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9796,
+            "recall": 0.96,
+            "f1": 0.9697,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 0.98,
+            "f1": 0.9899,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 0.99,
+            "f1": 0.995,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9709,
+            "recall": 1.0,
+            "f1": 0.9852,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              99,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              97,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              3,
+              1,
+              96,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              98,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              99,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100
+            ]
+          ]
+        },
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0033,
+        "detection_accuracy": 0.997,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.0289,
+          "detection_accuracy": 0.974,
+          "false_positives": 0,
+          "false_negatives": 26,
+          "accuracy": 0.974,
+          "abstained": 23
+        },
+        "confidence": {
+          "mean_correct": 0.9911,
+          "mean_incorrect": 0.634
+        },
+        "latency_ms": {
+          "mean": 4.278,
+          "p50": 3.969,
+          "p95": 6.928,
+          "samples": 200,
+          "batch_ms_per_sample": 0.0194
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 1.39,
+          "rss_mb": 285.6
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "test",
+        "samples": 1000,
+        "model_version": "img-1.0.6",
+        "architecture": "mlp",
+        "test_set_hash": "06663196da37a942",
+        "evaluated_at": "2026-10-30T17:21:21+00:00"
+      },
+      "validation_metrics": {
+        "accuracy": 0.984,
+        "macro_f1": 0.984,
+        "per_category": {
+          "text": {
+            "precision": 0.9796,
+            "recall": 0.96,
+            "f1": 0.9697,
+            "support": 100
+          },
+          "text_distorted": {
+            "precision": 0.9798,
+            "recall": 0.97,
+            "f1": 0.9749,
+            "support": 100
+          },
+          "math": {
+            "precision": 0.9159,
+            "recall": 0.98,
+            "f1": 0.9469,
+            "support": 100
+          },
+          "audio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "image_classification": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "grid": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "recaptcha": {
+            "precision": 0.9901,
+            "recall": 1.0,
+            "f1": 0.995,
+            "support": 100
+          },
+          "hcaptcha": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "turnstile": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 100
+          },
+          "none": {
+            "precision": 0.9894,
+            "recall": 0.93,
+            "f1": 0.9588,
+            "support": 100
+          }
+        },
+        "confusion": {
+          "labels": [
+            "text",
+            "text_distorted",
+            "math",
+            "audio",
+            "image_classification",
+            "grid",
+            "recaptcha",
+            "hcaptcha",
+            "turnstile",
+            "none"
+          ],
+          "matrix": [
+            [
+              96,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              97,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              2,
+              98,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ],
+            [
+              2,
+              0,
+              3,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              93
+            ]
+          ]
+        },
+        "false_positive_rate": 0.07,
+        "false_negative_rate": 0.0011,
+        "detection_accuracy": 0.992,
+        "false_positives": 7,
+        "false_negatives": 1,
+        "at_runtime_threshold": {
+          "min_confidence": 0.8,
+          "false_positive_rate": 0.04,
+          "false_negative_rate": 0.0244,
+          "detection_accuracy": 0.974,
+          "false_positives": 4,
+          "false_negatives": 22,
+          "accuracy": 0.971,
+          "abstained": 24
+        },
+        "confidence": {
+          "mean_correct": 0.9892,
+          "mean_incorrect": 0.755
+        },
+        "latency_ms": {
+          "mean": 3.081,
+          "p50": 3.025,
+          "p95": 3.983,
+          "samples": 50,
+          "batch_ms_per_sample": 0.0171
+        },
+        "resources": {
+          "param_count": 551178,
+          "model_size_bytes": 2221848,
+          "cpu_seconds": 0.48,
+          "rss_mb": 286.4
+        },
+        "ocr_metrics": {
+          "character_accuracy": "not_applicable",
+          "exact_string_accuracy": "not_applicable",
+          "reason": "No OCR / text-reading model is trained or shipped: reading challenge text would be solving the CAPTCHA, which this framework does not do."
+        },
+        "split": "validation",
+        "samples": 1000,
+        "model_version": "img-1.0.6",
+        "architecture": "mlp",
+        "test_set_hash": null,
+        "evaluated_at": "2026-10-30T17:21:20+00:00"
+      },
+      "architecture_comparison": {
+        "mlp": {
+          "val_accuracy": 0.984,
+          "val_macro_f1": 0.984,
+          "val_fp_rate": 0.07,
+          "val_fn_rate": 0.0011,
+          "epochs_run": 11,
+          "status": "early_stopped",
+          "train_seconds": 41.3,
+          "param_count": 551178,
+          "latency_ms_mean": 3.081
+        }
+      },
+      "dataset_hash": "794011f5294f9d46",
+      "config_hash": "4c5bfc6dfe54860f",
+      "train_samples": 10000,
+      "device": {
+        "requested": "auto",
+        "gpu_available": false,
+        "gpu_name": null,
+        "used": "cpu",
+        "note": "no GPU detected; training on CPU"
+      },
+      "iteration": 4,
+      "note": "iteration 4: +400 'math' samples",
+      "compared_with": "img-1.0.3",
+      "recommended": false,
+      "criteria": [
+        "accuracy gain -0.0010 < required 0.002"
+      ],
+      "train_seconds_total": 56.9
+    }
+  }
+}

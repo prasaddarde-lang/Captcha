@@ -1,0 +1,8 @@
+{
+  "task_id": "RPA_003",
+  "platform": "PowerAutomate",
+  "action": "detect",
+  "timeout": 30,
+  "mode": "production",
+  "html_file": "test_data/fixtures/hcaptcha_mock.html"
+}

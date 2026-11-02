@@ -1,0 +1,19 @@
+{
+  "task_id": "RPA_001",
+  "status": "VERIFIED",
+  "captcha_detected": true,
+  "captcha_type": "recaptcha",
+  "captcha_subtype": null,
+  "confidence": null,
+  "resolution_method": "human_in_the_loop",
+  "message": "Verified by Sample Operator; workflow may resume",
+  "request_id": "HV_913ff1bdd9ac4a88",
+  "screenshot_path": null,
+  "next_action": null,
+  "official_api": null,
+  "signals": [],
+  "model_version": null,
+  "duration_ms": 18,
+  "exit_code": 0,
+  "timestamp": "2026-10-30T13:09:13+00:00"
+}

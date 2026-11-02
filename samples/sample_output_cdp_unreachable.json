@@ -1,0 +1,19 @@
+{
+  "task_id": "RPA_002",
+  "status": "NETWORK_ERROR",
+  "captcha_detected": false,
+  "captcha_type": null,
+  "captcha_subtype": null,
+  "confidence": null,
+  "resolution_method": null,
+  "message": "Network error: Error: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222Call log:  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222",
+  "request_id": null,
+  "screenshot_path": null,
+  "next_action": null,
+  "official_api": null,
+  "signals": [],
+  "model_version": null,
+  "duration_ms": 624,
+  "exit_code": 50,
+  "timestamp": "2026-10-30T13:09:01+00:00"
+}

@@ -1,0 +1,256 @@
+{
+  "version": "1.0.0",
+  "description": "Baseline signature model: DOM / script / frame metadata signals per CAPTCHA type.",
+  "threshold": 2.0,
+  "confidence_scale": 2.0,
+  "provider_types": [
+    "recaptcha",
+    "hcaptcha",
+    "turnstile",
+    "funcaptcha",
+    "geetest",
+    "aws_waf"
+  ],
+  "types": {
+    "recaptcha": [
+      {
+        "id": "recaptcha_frame",
+        "kind": "iframe_src",
+        "pattern": "(google\\.com|recaptcha\\.net)/recaptcha/(api2|enterprise)/(anchor|bframe)",
+        "weight": 3.0
+      },
+      {
+        "id": "recaptcha_script",
+        "kind": "script_src",
+        "pattern": "(google\\.com|gstatic\\.com|recaptcha\\.net)/recaptcha/(api|enterprise)\\.js",
+        "weight": 2.5
+      },
+      {
+        "id": "recaptcha_class",
+        "kind": "class",
+        "pattern": "^g-recaptcha$",
+        "weight": 2.5
+      },
+      {
+        "id": "recaptcha_badge",
+        "kind": "class",
+        "pattern": "^grecaptcha-badge$",
+        "weight": 2.0
+      },
+      {
+        "id": "recaptcha_response_field",
+        "kind": "input_name",
+        "pattern": "^g-recaptcha-response",
+        "weight": 2.0
+      },
+      {
+        "id": "recaptcha_sitekey_attr",
+        "kind": "attr_name",
+        "pattern": "^data-sitekey$",
+        "weight": 0.5
+      }
+    ],
+    "hcaptcha": [
+      {
+        "id": "hcaptcha_frame",
+        "kind": "iframe_src",
+        "pattern": "(newassets\\.)?hcaptcha\\.com/captcha",
+        "weight": 3.0
+      },
+      {
+        "id": "hcaptcha_script",
+        "kind": "script_src",
+        "pattern": "(js\\.)?hcaptcha\\.com/1/api\\.js",
+        "weight": 2.5
+      },
+      {
+        "id": "hcaptcha_class",
+        "kind": "class",
+        "pattern": "^h-captcha$",
+        "weight": 2.5
+      },
+      {
+        "id": "hcaptcha_response_field",
+        "kind": "input_name",
+        "pattern": "^h-captcha-response",
+        "weight": 2.0
+      },
+      {
+        "id": "hcaptcha_sitekey_attr",
+        "kind": "attr_name",
+        "pattern": "^data-sitekey$",
+        "weight": 0.5
+      }
+    ],
+    "turnstile": [
+      {
+        "id": "turnstile_frame",
+        "kind": "iframe_src",
+        "pattern": "challenges\\.cloudflare\\.com",
+        "weight": 3.0
+      },
+      {
+        "id": "turnstile_script",
+        "kind": "script_src",
+        "pattern": "challenges\\.cloudflare\\.com/turnstile",
+        "weight": 2.5
+      },
+      {
+        "id": "turnstile_class",
+        "kind": "class",
+        "pattern": "^cf-turnstile$",
+        "weight": 2.5
+      },
+      {
+        "id": "turnstile_response_field",
+        "kind": "input_name",
+        "pattern": "^cf-turnstile-response",
+        "weight": 2.0
+      },
+      {
+        "id": "cloudflare_challenge_ids",
+        "kind": "id",
+        "pattern": "^(challenge-form|cf-challenge-running|challenge-stage|challenge-running)$",
+        "weight": 2.0
+      },
+      {
+        "id": "cloudflare_challenge_text",
+        "kind": "text",
+        "pattern": "(checking if the site connection is secure|verify you are human by completing)",
+        "weight": 0.8
+      }
+    ],
+    "funcaptcha": [
+      {
+        "id": "arkose_frame",
+        "kind": "iframe_src",
+        "pattern": "(arkoselabs\\.com|funcaptcha\\.com)",
+        "weight": 3.0
+      },
+      {
+        "id": "arkose_script",
+        "kind": "script_src",
+        "pattern": "(arkoselabs\\.com|funcaptcha\\.com)",
+        "weight": 2.5
+      },
+      {
+        "id": "arkose_id",
+        "kind": "id",
+        "pattern": "^(funcaptcha|arkose|fc-token)",
+        "weight": 1.5
+      }
+    ],
+    "geetest": [
+      {
+        "id": "geetest_script",
+        "kind": "script_src",
+        "pattern": "(geetest\\.com|/gt4?\\.js)",
+        "weight": 2.5
+      },
+      {
+        "id": "geetest_class",
+        "kind": "class",
+        "pattern": "^geetest_",
+        "weight": 2.0
+      }
+    ],
+    "aws_waf": [
+      {
+        "id": "awswaf_script",
+        "kind": "script_src",
+        "pattern": "(token|captcha)\\.awswaf\\.com",
+        "weight": 3.0
+      },
+      {
+        "id": "awswaf_container",
+        "kind": "id",
+        "pattern": "^(captcha-container|aws-waf-captcha)$",
+        "weight": 0.5
+      }
+    ],
+    "text": [
+      {
+        "id": "text_captcha_image",
+        "kind": "img",
+        "pattern": "captcha",
+        "weight": 1.5
+      },
+      {
+        "id": "text_captcha_input",
+        "kind": "input_name",
+        "pattern": "^(?!.*(g-recaptcha|h-captcha|cf-turnstile)).*(captcha|security[_-]?code|verification[_-]?code)",
+        "weight": 1.5
+      },
+      {
+        "id": "text_captcha_prompt",
+        "kind": "text",
+        "pattern": "(enter the (characters|text|code|letters) (you see|shown|in the image|above)|type the (characters|text|letters))",
+        "weight": 1.5
+      },
+      {
+        "id": "text_captcha_class",
+        "kind": "class",
+        "pattern": "^(?!(g-recaptcha|h-captcha|grecaptcha|rc-)).*captcha",
+        "weight": 0.5
+      },
+      {
+        "id": "explicit_text_type",
+        "kind": "attr",
+        "pattern": "^data-captcha-type=text$",
+        "weight": 3.0
+      }
+    ],
+    "image_selection": [
+      {
+        "id": "image_select_prompt",
+        "kind": "text",
+        "pattern": "(select all (images|squares|tiles) (with|containing)|click (on )?(each|all) (image|picture)s?|select all matching images)",
+        "weight": 2.5
+      },
+      {
+        "id": "image_grid_class",
+        "kind": "class",
+        "pattern": "((image|img|captcha)[-_]?(grid|tile|select))|rc-imageselect",
+        "weight": 1.5
+      },
+      {
+        "id": "explicit_image_type",
+        "kind": "attr",
+        "pattern": "^data-captcha-type=image(_selection)?$",
+        "weight": 3.0
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio_prompt",
+        "kind": "text",
+        "pattern": "(audio challenge|listen and type|press play to listen|get an audio challenge|type what you hear)",
+        "weight": 2.0
+      },
+      {
+        "id": "audio_class",
+        "kind": "class",
+        "pattern": "(audio[-_]?(captcha|challenge|response)|rc-audiochallenge)",
+        "weight": 2.5
+      },
+      {
+        "id": "audio_input",
+        "kind": "input_name",
+        "pattern": "audio[-_]?(response|answer|captcha)",
+        "weight": 2.0
+      },
+      {
+        "id": "audio_tag",
+        "kind": "tag",
+        "pattern": "^audio$",
+        "weight": 0.5
+      },
+      {
+        "id": "explicit_audio_type",
+        "kind": "attr",
+        "pattern": "^data-captcha-type=audio$",
+        "weight": 3.0
+      }
+    ]
+  }
+}

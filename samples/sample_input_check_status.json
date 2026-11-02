@@ -1,0 +1,7 @@
+{
+  "task_id": "RPA_001",
+  "platform": "UiPath",
+  "action": "check_status",
+  "request_id": "HV_replace_with_id",
+  "timeout": 10
+}

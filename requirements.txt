@@ -1,0 +1,16 @@
+# Core
+pydantic>=2.9
+httpx>=0.27
+# REST API (optional)
+fastapi>=0.115
+uvicorn>=0.30
+# Browser interaction (optional; run "python -m playwright install chromium" after install)
+playwright>=1.48
+# Synthetic test-image generation
+opencv-python-headless>=4.10
+numpy>=2.1
+# Training controller (config + resource monitoring)
+pyyaml>=6.0
+psutil>=5.9
+# Testing
+pytest>=8.3

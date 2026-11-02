@@ -1,0 +1,8 @@
+<!doctype html>
+<html><head><title>Mock login - reCAPTCHA completed</title>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script></head>
+<body data-mock-captcha="recaptcha">
+<form method="post" action="/login">
+  <div class="g-recaptcha" data-sitekey="MOCK_SITE_KEY_FOR_TESTS_ONLY"></div>
+  <textarea name="g-recaptcha-response" style="display:none">MOCK-COMPLETED-RESPONSE</textarea>
+</form></body></html>
