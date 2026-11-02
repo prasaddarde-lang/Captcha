@@ -51,6 +51,12 @@ class Settings:
     screenshots_enabled: bool = field(default_factory=lambda: _env_bool("SCREENSHOTS_ENABLED", True))
     # Retention for screenshots (hours). Sensitive challenge content is not kept longer.
     screenshot_retention_hours: int = field(default_factory=lambda: _env_int("SCREENSHOT_RETENTION_HOURS", 24))
+    # Optional deployment pin for the signature model, for hosts that start with an empty registry
+    # (e.g. a cloud service whose disk is reset on redeploy). Both values are required: the version
+    # must already have been approved by the named human, whose name is recorded with the pin.
+    signature_model: str | None = field(default_factory=lambda: os.environ.get("CAPTCHA_FW_SIGNATURE_MODEL") or None)
+    signature_model_approved_by: str | None = field(
+        default_factory=lambda: os.environ.get("CAPTCHA_FW_SIGNATURE_MODEL_APPROVED_BY") or None)
     # Image model: below this confidence it never declares a CAPTCHA on its own.
     image_min_confidence: float = field(default_factory=lambda: float(_env("IMAGE_MIN_CONFIDENCE", "0.80")))
     # Never send traffic to non-HTTPS endpoints for official APIs unless explicitly allowed (tests).

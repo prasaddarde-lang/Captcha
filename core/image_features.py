@@ -6,6 +6,9 @@ challenge *types* apart, not to read characters.
 """
 from __future__ import annotations
 
+import base64
+import binascii
+import re
 from pathlib import Path
 
 import cv2
@@ -27,9 +30,31 @@ def load_image(path: str | Path) -> np.ndarray:
     if p.stat().st_size > MAX_IMAGE_BYTES:
         raise ImageInputError("image larger than 10 MB")
     data = np.fromfile(str(p), dtype=np.uint8)  # handles non-ASCII Windows paths
+    return _decode(data, p.name)
+
+
+def load_image_base64(value: str) -> np.ndarray:
+    """Decode a base64 PNG/JPEG sent inline by a remote robot (optionally as a ``data:image/...;base64,`` URL)."""
+    text = value.strip()
+    if text.startswith("data:"):
+        header, _, text = text.partition(",")
+        if not re.fullmatch(r"data:image/(png|jpe?g);base64", header, re.IGNORECASE):
+            raise ImageInputError("image_base64 data URL must be image/png or image/jpeg")
+    try:
+        raw = base64.b64decode("".join(text.split()), validate=True)
+    except (binascii.Error, ValueError):
+        raise ImageInputError("image_base64 is not valid base64") from None
+    if len(raw) > MAX_IMAGE_BYTES:
+        raise ImageInputError("image larger than 10 MB")
+    if not (raw.startswith(b"\x89PNG\r\n\x1a\n") or raw.startswith(b"\xff\xd8\xff")):
+        raise ImageInputError("image_base64 must be a PNG or JPEG image")
+    return _decode(np.frombuffer(raw, dtype=np.uint8), "image_base64")
+
+
+def _decode(data: np.ndarray, name: str) -> np.ndarray:
     img = cv2.imdecode(data, cv2.IMREAD_COLOR)
     if img is None:
-        raise ImageInputError(f"not a decodable image: {p.name}")
+        raise ImageInputError(f"not a decodable image: {name}")
     if max(img.shape[:2]) > MAX_SIDE:
         raise ImageInputError("image dimensions too large")
     return img

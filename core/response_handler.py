@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_valida
 from core.security import TASK_ID_RE, sanitize_text, validate_url
 
 MAX_HTML_CHARS = 5_000_000
+MAX_IMAGE_BASE64_CHARS = 14_000_100  # 10 MB image as base64 (+ optional data-URL header)
 
 
 class Status(str, Enum):
@@ -72,6 +73,7 @@ class TaskRequest(BaseModel):
     cdp_endpoint: str | None = None      # attach to the RPA's own browser, e.g. http://127.0.0.1:9222
     url: str | None = None               # page URL (used to pick tab in CDP mode, or to open the page)
     image_file: str | None = None        # cropped screenshot of the suspected challenge element (image model)
+    image_base64: str | None = Field(default=None, max_length=MAX_IMAGE_BASE64_CHARS)  # same, sent inline (remote API)
 
     site: str | None = None              # key in sites.json; defaults to the URL host
     screenshot: bool = False             # capture a screenshot for the operator (where authorized)
@@ -109,9 +111,11 @@ class TaskRequest(BaseModel):
         if self.action in ("check_status", "cancel") and not self.request_id:
             raise ValueError(f"action '{self.action}' requires request_id")
         if self.action in ("detect", "detect_and_handle") and not (
-            self.html or self.html_file or self.cdp_endpoint or self.url or self.image_file
+            self.html or self.html_file or self.cdp_endpoint or self.url or self.image_file or self.image_base64
         ):
-            raise ValueError("provide one of: html, html_file, cdp_endpoint, url, image_file")
+            raise ValueError("provide one of: html, html_file, cdp_endpoint, url, image_file, image_base64")
+        if self.image_file and self.image_base64:
+            raise ValueError("provide image_file or image_base64, not both")
         if self.test_response and self.mode != "test":
             raise ValueError("test_response is only allowed in test mode")
         return self

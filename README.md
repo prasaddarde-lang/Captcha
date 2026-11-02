@@ -138,6 +138,7 @@ with secrets redacted), and with `-v` they also go to stderr.
 | `site` | Key in `sites.json`. Defaults to the URL host |
 | `test_response` | `pass` / `fail` / `timeout`, test mode only |
 | `image_file` | Optional cropped screenshot of the suspected challenge element (PNG/JPG, at most 10 MB). The image model classifies its *type*. It can be sent alone (for Citrix/VDI robots that only see pixels) or together with `html`/`url` |
+| `image_base64` | The same screenshot sent inline as base64 (or a `data:image/png;base64,…` URL), for robots calling a **remote** API that cannot read their files. Use either `image_file` or `image_base64`, not both. Inline uploads never qualify for test mode |
 
 **Output** (`TaskResponse`):
 
@@ -319,6 +320,29 @@ not set, only loopback clients are accepted.
 **HTTPS:** set `CAPTCHA_FW_SSL_CERTFILE` and `CAPTCHA_FW_SSL_KEYFILE`. The server warns if it is
 bound to a non-loopback interface without TLS.
 
+### Hosted API (Render)
+
+The REST API also runs as a cloud web service (Render, Python runtime, deploys from `main`):
+
+| Setting | Value |
+|---|---|
+| Build command | `pip install -r requirements.txt` |
+| Start command | `python main.py serve --host 0.0.0.0 --port $PORT` (Render terminates HTTPS) |
+| Environment | `CAPTCHA_FW_API_KEY` (required: without it every remote call is refused), `CAPTCHA_FW_SIGNATURE_MODEL=1.1.0`, `CAPTCHA_FW_SIGNATURE_MODEL_APPROVED_BY=<approver>` |
+
+A hosted API runs on another machine, so the robot sends the page **content**, not local paths:
+`html` (the page's outer HTML) and/or `image_base64` (a cropped screenshot). `html_file`,
+`image_file` and `cdp_endpoint` refer to the server's own disk and network and do not work remotely.
+
+```bash
+curl -X POST https://<service>.onrender.com/v1/tasks -H "X-API-Key: <key>" -H "Content-Type: application/json" \
+  -d '{"task_id":"INV-001","platform":"uipath","url":"https://site.example/login","html":"<outer HTML>"}'
+```
+
+The free plan's disk is reset on every restart or redeploy, so the history database and pending
+verifications are not kept. `CAPTCHA_FW_SIGNATURE_MODEL` re-deploys the approved signature model on
+each start (see below).
+
 ## Learning, models & reports
 
 ```bat
@@ -441,6 +465,7 @@ evaluations to `reports/performance/eval_*.json`, and per-epoch logs to
 | `CAPTCHA_FW_REQUIRE_HTTPS` | `1` | Outbound API and webhook calls must use HTTPS |
 | `CAPTCHA_FW_MAX_TIMEOUT`, `_HTTP_TIMEOUT`, `_HTTP_RETRIES`, `_OPERATOR_POLL_INTERVAL` | 3600 / 15 / 2 / 2 | Limits |
 | `CAPTCHA_FW_PYTHON`, `CAPTCHA_FW_VENV` | – | Interpreter or venv for `run.bat` and `scripts\*.bat` |
+| `CAPTCHA_FW_SIGNATURE_MODEL`, `CAPTCHA_FW_SIGNATURE_MODEL_APPROVED_BY` | – | Deploy an already-approved signature model (e.g. `1.1.0`) at start-up on hosts whose registry starts empty. Both are required; the approver's name is recorded and the normal approve/deploy checks apply. A rejected or missing model is refused and logged |
 | `CAPTCHA_FW_IMAGE_MIN_CONFIDENCE` | `0.80` | Image model never declares a CAPTCHA on its own below this |
 | `CAPTCHA_FW_DATASETS_DIR`, `_REPORTS_DIR`, `_TRAINING_CONFIG` | `datasets`, `reports`, `training\training_config.yaml` | Training paths |
 | Names referenced in `sites.json` (`auth_env`, `provider_secret_env`) | – | Site API tokens and provider secrets |

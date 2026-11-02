@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import logging
+import re
 import threading
 import time
 from pathlib import Path
@@ -39,6 +40,49 @@ class CaptchaFramework:
         self._classifier: CaptchaClassifier | None = None
         # Image-based type classifier: only the human-approved production model is ever loaded.
         self.image_classifier = ImageCaptchaClassifier(self.settings.models_dir, self.settings.image_min_confidence)
+        self.apply_signature_model_pin()
+
+    def apply_signature_model_pin(self) -> str | None:
+        """Deploy the signature model named by CAPTCHA_FW_SIGNATURE_MODEL, if set.
+
+        For hosts whose model registry starts empty (cloud redeploys). The pin must name the human who
+        approved that version (CAPTCHA_FW_SIGNATURE_MODEL_APPROVED_BY); it goes through the normal
+        registry approve/deploy checks and is recorded with a note. A bad pin is logged and the
+        current model stays active. Returns the deployed version, or None when no pin was applied.
+        """
+        version, approver = self.settings.signature_model, self.settings.signature_model_approved_by
+        if not version:
+            return None
+        from learning.model_evaluation import ApprovalError, ModelRegistry, load_model_file
+
+        try:
+            if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+                raise ApprovalError(f"CAPTCHA_FW_SIGNATURE_MODEL must look like 1.2.3, got {version!r}")
+            if not approver:
+                raise ApprovalError("CAPTCHA_FW_SIGNATURE_MODEL_APPROVED_BY must name the human who approved it")
+            registry = ModelRegistry(self.db, self.settings)
+            current = registry.ensure_baseline()
+            if current and current["version"] == version:
+                return version
+            m = self.db.get_model(version)
+            if m is None:
+                path = self.settings.models_dir / f"classifier_v{version}.json"
+                if not path.exists():
+                    raise ApprovalError(f"model file not found: {path.name}")
+                if load_model_file(str(path))["version"] != version:
+                    raise ApprovalError(f"{path.name} does not contain version {version}")
+                self.db.register_model(version, str(path), None, None, None, "deployment-pin",
+                                       f"pinned by CAPTCHA_FW_SIGNATURE_MODEL; approved by {approver}")
+                m = self.db.get_model(version)
+            if m["status"] == "CANDIDATE":  # type: ignore[index]
+                registry.approve(version, approver)
+            registry.deploy(version)
+            self.reload_model()
+            log.info("signature model %s deployed from pin (approved by %s)", version, approver)
+            return version
+        except (ApprovalError, ValueError, OSError) as exc:
+            log.error("signature model pin %s ignored: %s", version, exc)
+            return None
 
     @property
     def detector(self) -> CaptchaDetector:
@@ -94,7 +138,7 @@ class CaptchaFramework:
             return self._detect_and_resolve(request, snapshot, deadline, session=None, image=image)
 
         if not (request.cdp_endpoint or request.url):  # image-only request
-            snapshot = PageSnapshot(html="", url=None, source="image_file")
+            snapshot = PageSnapshot(html="", url=None, source="image_base64" if request.image_base64 else "image_file")
             return self._detect_and_resolve(request, snapshot, deadline, session=None, image=image)
 
         # Live browser page (attach over CDP, or open the URL)
@@ -117,15 +161,18 @@ class CaptchaFramework:
 
     def _image_prediction(self, request: TaskRequest) -> tuple[ImagePrediction, bool] | None:
         """Classify the challenge *type* from a cropped screenshot. Returns (prediction, synthetic)."""
-        if not request.image_file:
+        if not (request.image_file or request.image_base64):
             return None
-        path = self._resolve_input_path(request.image_file)
+        path = self._resolve_input_path(request.image_file) if request.image_file else None
         if not self.image_classifier.available:
             if request.html or request.html_file or request.cdp_endpoint or request.url:
                 log.warning("image_file ignored: no production image model is deployed")
                 return None
             raise RuntimeError("No production image model is deployed. A named reviewer approves a trained "
                                "candidate with scripts\\approve_model.bat <version> \"<name>\", or send html/url input.")
+        if path is None:
+            # Inline uploads are never treated as project-generated synthetic images (no test-mode allowance).
+            return self.image_classifier.classify_base64(request.image_base64), False  # type: ignore[arg-type]
         pred = self.image_classifier.classify_file(path)
         synthetic_roots = [self.settings.test_data_dir, self.settings.datasets_dir]
         return pred, any(_is_under(path, r) for r in synthetic_roots)

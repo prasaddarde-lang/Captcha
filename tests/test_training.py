@@ -405,6 +405,39 @@ def test_image_input_validation(tenv, make_request, tmp_path):
     assert fw.run(make_request(image_file=str(outside))).status == Status.INVALID_INPUT
 
 
+def test_image_base64_input(tenv, make_request):
+    """Remote robots send the screenshot inline; same model, same result as image_file."""
+    import base64
+    from core.response_handler import Status
+    _promote(tenv)
+    fw = _framework(tenv)
+    img = _pick(tenv, "grid")
+    b64 = base64.b64encode(img.read_bytes()).decode()
+    r = fw.run(make_request(image_base64=b64))
+    assert r.status == Status.HUMAN_VERIFICATION_REQUIRED and r.request_id
+    assert r.detection_source == "image_model" and r.image_category == "grid"
+    r2 = fw.run(make_request(image_base64="data:image/jpeg;base64," + b64, mode="test"))
+    assert r2.status == Status.POLICY_BLOCKED  # uploads are never treated as our own synthetic images
+    assert fw.run(make_request(image_base64=_pick_b64(tenv, "none"))).status == Status.NO_CAPTCHA
+
+
+def _pick_b64(tenv, category):
+    import base64
+    return base64.b64encode(_pick(tenv, category).read_bytes()).decode()
+
+
+def test_image_base64_validation(tenv, make_request):
+    import base64
+    from core.response_handler import Status
+    _promote(tenv)
+    fw = _framework(tenv)
+    for bad in ("not base64 !!", base64.b64encode(b"hello world").decode(),
+                "data:text/html;base64," + base64.b64encode(b"<html>").decode()):
+        assert fw.run(make_request(image_base64=bad)).status == Status.INVALID_INPUT, bad
+    with pytest.raises(ValueError):
+        make_request(image_base64=_pick_b64(tenv, "grid"), image_file="x.jpg")
+
+
 def test_html_flow_unchanged_without_image(tenv, make_request, fixture_html):
     r = _framework(tenv).run(make_request(html=fixture_html("hcaptcha_mock.html"), action="detect"))
     assert r.detection_source == "metadata" and r.image_model_version is None and r.captcha_type == "hcaptcha"

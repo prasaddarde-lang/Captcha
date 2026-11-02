@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 
-from core.image_features import FeatureExtractor, load_image
+from core.image_features import FeatureExtractor, load_image, load_image_base64
 
 log = logging.getLogger("captcha_fw.image")
 
@@ -158,3 +158,6 @@ class ImageCaptchaClassifier:
 
     def classify_file(self, path: str | Path) -> ImagePrediction:
         return self.classify(load_image(path))
+
+    def classify_base64(self, value: str) -> ImagePrediction:
+        return self.classify(load_image_base64(value))
